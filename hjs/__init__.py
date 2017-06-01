@@ -65,7 +65,7 @@ class hjs(OrderedDict):
         return self.keys()
 
     def __repr__(self):
-        return 'hjs("""\n%s""")' % hjson.dumps(self)
+        return 'hjs("""\n%s""")' % hjson.dumps(self).encode('utf-8')
 
     def _repr_pretty_(self, p, cycle):
         p.text(repr(self))
@@ -78,7 +78,7 @@ def _wrap(fun):
     @wraps(fun)
     def wrapper(*args, **kwds):
         hook = kwds.get('object_pairs_hook')
-        if hook is OrderedDict:
+        if hook is None or hook is OrderedDict:
             kwds['object_pairs_hook'] = hjs
         return fun(*args, **kwds)
 

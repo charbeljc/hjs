@@ -6,7 +6,7 @@ hjs
 .. module:: hjs
 
 
-``hjs`` is a thin wrapper around `hjson-py <http://github.com/hjson/hjson-py>`_
+``hjs`` is a thin wrapper around `hjson <http://github.com/hjson/hjson-py>`_
 
 .. image:: https://duckduckgo.com/i/bf0eb228.png
 .. code-block:: python

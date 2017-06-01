@@ -15,6 +15,8 @@ A thin wrapper around [hjson](http://github.com/hjson/hjson-py).
 >>> assert da['values'] == 42
 >>> assert da.t.a == "you get the point, now :-)"
 """
+
+from functools import wraps
 from collections import OrderedDict
 import hjson
 
@@ -35,7 +37,7 @@ except NameError:
 
 class hjs(OrderedDict):
     """
-    TODO
+    TODO ;-)
     """
     def __init__(self, *args, **kwargs):
         try:
@@ -71,31 +73,29 @@ class hjs(OrderedDict):
         p.text(repr(self))
 
 
-def _wrap(fun):
-
-    from functools import wraps
+def adapt_loader(fun):
 
     @wraps(fun)
-    def wrapper(*args, **kwds):
+    def with_my_object_pairs_hook(*args, **kwds):
         hook = kwds.get('object_pairs_hook')
         if hook is None or hook is OrderedDict:
             kwds['object_pairs_hook'] = hjs
         return fun(*args, **kwds)
 
-    return wrapper
+    return with_my_object_pairs_hook
 
 
-loads = _wrap(hjson.loads)  # noqa: F401
-load = _wrap(hjson.load)    # noqa: F401
+loads = adapt_loader(hjson.loads)  # noqa: F401
+load = adapt_loader(hjson.load)    # noqa: F401
 
-def dumps(obj, hjs=False, **kw):
-    if hjs:
+def dumps(obj, human=False, **kw):
+    if human:
         return hjson.dumps(obj, **kw)
     else:
         return hjson.dumpsJSON(obj, **kw)
 
-def dump(obj, fp, hjs=False, **kw):
-    if hjs:
+def dump(obj, fp, human=False, **kw):
+    if human:
         return hjson.dump(obj, fp, **kw)
     else:
         return hjson.dumpsJSON(obj, fp, **kw)

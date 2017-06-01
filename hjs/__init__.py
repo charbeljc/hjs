@@ -1,6 +1,5 @@
 """
 A thin wrapper around [hjson](http://github.com/hjson/hjson-py).
-
 >>> from hjs import hjs, dumps, loads, dump, load
 >>> da = hjs('''
 ... {
@@ -14,25 +13,15 @@ A thin wrapper around [hjson](http://github.com/hjson/hjson-py).
 ... ''')
 >>> assert da['values'] == 42
 >>> assert da.t.a == "you get the point, now :-)"
-"""
 
+>>> "hum, what if i put an é in it ?"
+"""
+from __future__ import unicode_literals
 from functools import wraps
 from collections import OrderedDict
 import hjson
-
-
-from pkg_resources import get_distribution, DistributionNotFound
-try:
-    __version__ = get_distribution(__name__).version
-except DistributionNotFound:
-    __version__ = 'X.X.X'
-
-del get_distribution, DistributionNotFound
-
-try:
-    unicode
-except NameError:
-    basestring = (bytes, str)
+import six
+from .version import __version__
 
 
 class hjs(OrderedDict):
@@ -87,6 +76,7 @@ def adapt_loader(fun):
 
 loads = adapt_loader(hjson.loads)  # noqa: F401
 load = adapt_loader(hjson.load)    # noqa: F401
+
 
 def dumps(obj, human=False, **kw):
     if human:

@@ -46,6 +46,6 @@ if __name__ == "__main__":
         license="MIT License",
         packages=['hjs', 'hjs.tests'],
         platforms=['any'],
-        install_requires=['hjson'],
+        install_requires=['hjson', 'six'],
         setup_requires=['setuptools_scm'])
 

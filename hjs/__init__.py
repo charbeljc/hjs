@@ -1,5 +1,7 @@
+# coding: utf-8
 """
 A thin wrapper around [hjson](http://github.com/hjson/hjson-py).
+>>> from __future__ import unicode_literals
 >>> from hjs import hjs, dumps, loads, dump, load
 >>> da = hjs('''
 ... {
@@ -22,7 +24,7 @@ from functools import wraps
 from collections import OrderedDict
 import hjson
 import six
-from .version import __version__
+from .version import __version__  # noqa: F401
 
 
 class hjs(OrderedDict):
@@ -85,10 +87,9 @@ def dumps(obj, human=False, **kw):
     else:
         return hjson.dumpsJSON(obj, **kw)
 
+
 def dump(obj, fp, human=False, **kw):
     if human:
         return hjson.dump(obj, fp, **kw)
     else:
         return hjson.dumpsJSON(obj, fp, **kw)
-
-

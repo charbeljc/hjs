@@ -4,4 +4,3 @@ try:
     __version__ = get_distribution('hjs').version
 except DistributionNotFound:
     __version__ = '#UNRELEASED#'
-

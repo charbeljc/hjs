@@ -87,5 +87,17 @@ def _wrap(fun):
 
 loads = _wrap(hjson.loads)  # noqa: F401
 load = _wrap(hjson.load)    # noqa: F401
-dumps = hjson.dumps         # noqa: F401
-dump = hjson.dump           # noqa: F401
+
+def dumps(obj, hjs=False, **kw):
+    if hjs:
+        return hjson.dumps(obj, **kw)
+    else:
+        return hjson.dumpsJSON(obj, **kw)
+
+def dump(obj, fp, hjs=False, **kw):
+    if hjs:
+        return hjson.dump(obj, fp, **kw)
+    else:
+        return hjson.dumpsJSON(obj, fp, **kw)
+
+

@@ -14,7 +14,8 @@ A thin wrapper around [hjson](http://github.com/hjson/hjson-py).
 >>> assert da['values'] == 42
 >>> assert da.t.a == "you get the point, now :-)"
 
->>> "hum, what if i put an é in it ?"
+>>> "hum, what if i put an é in this ?"
+'hum, what if i put an é in this ?'
 """
 from __future__ import unicode_literals
 from functools import wraps
@@ -32,7 +33,7 @@ class hjs(OrderedDict):
         try:
             super(hjs, self).__init__(*args, **kwargs)
         except ValueError:
-            if args and isinstance(args[0], basestring):
+            if args and isinstance(args[0], six.string_types):
                 super(hjs, self).__init__()
                 base = hjson.loads(args[0], object_pairs_hook=self.__class__)
                 self.update(base)

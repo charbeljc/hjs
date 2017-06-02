@@ -2,7 +2,7 @@
 hjs 
 ===
 
-``hjs`` is a thin wrapper around `hjson <http://github.com/hjson/hjson-py>` _
+``hjs`` is a thin wrapper around `hjson <http://github.com/hjson/hjson-py>`_
 
 .. image:: https://api.travis-ci.org/charbeljc/hjs.svg?branch=master
 .. image:: https://duckduckgo.com/i/bf0eb228.png

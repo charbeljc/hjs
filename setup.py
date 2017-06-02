@@ -3,7 +3,7 @@ from __future__ import with_statement
 
 import sys
 try:
-    from setuptools import setup 
+    from setuptools import setup
 except ImportError:
     from distutils.core import setup
 
@@ -15,7 +15,7 @@ with open('README.rst', 'r') as f:
 
 CLASSIFIERS = filter(None, map(str.strip,
 """
-Development Status :: 5 - Production/Stable
+Development Status :: 3 - Alpha
 Intended Audience :: Developers
 License :: OSI Approved :: MIT License
 License :: OSI Approved :: Academic Free License (AFL)

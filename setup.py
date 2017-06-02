@@ -8,7 +8,7 @@ except ImportError:
     from distutils.core import setup
 
 IS_PYPY = hasattr(sys, 'pypy_translation_info')
-DESCRIPTION = "hjs, the missing bit of hjson-py"
+DESCRIPTION = "hjs, the missing bit of hjson"
 
 with open('README.rst', 'r') as f:
    LONG_DESCRIPTION = f.read()

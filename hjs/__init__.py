@@ -3,7 +3,7 @@
 A thin wrapper around [hjson](http://github.com/hjson/hjson-py).
 >>> from __future__ import unicode_literals
 >>> from hjs import hjs, dumps, loads, dump, load
->>> da = hjs('''
+>>> da = loads('''
 ... {
 ...    a: 1
 ...    b: are you ok with it ?
@@ -37,7 +37,7 @@ class hjs(OrderedDict):
         except ValueError:
             if args and isinstance(args[0], six.string_types):
                 super(hjs, self).__init__()
-                base = hjson.loads(args[0], object_pairs_hook=self.__class__)
+                base = loads(args[0])
                 self.update(base)
                 self.update(kwargs)
             else:

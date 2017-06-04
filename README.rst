@@ -8,9 +8,9 @@ hjs
 .. image:: https://duckduckgo.com/i/bf0eb228.png
 .. code-block:: python
 
-   >>> from hjs import hjs, dumps, loads, dump, load
+   >>> from hjs import  hjs, load, loads, dump, load
 
-   >>> da = hjs("""
+   >>> da = loads("""
    ... {
    ...    a: 1
    ...    b: are you ok with it ?
@@ -21,15 +21,18 @@ hjs
    ...    t: {
    ...        a: you get the point, now :-)
    ...    },
-   ...    value: 42
+   ...    values: 42
    ... }
    ... """)
 
-   >>> assert da['value'] == 42
+   >>> assert da['values'] == 42
    >>> assert da.t.a == "you get the point, now :-)"
 
 install as usual with ``pip install hjs``
 
+By the way, you should support [pypi](https://pypi.python.org/pypi), because, given the strategic importance of this project, it is _way_ under budgeted, as I heard...
+
 Regards,
-@CJC.
+@CJC_2017.
+
 

@@ -13,7 +13,7 @@ hjs
 
    >>> from hjs import hjs, dumps, loads, dump, load
 
-   >>> da = hjs("""
+   >>> da = loads("""
    ... {
    ...    a: 1
    ...    b: are you ok with it ?
@@ -35,3 +35,4 @@ You can find further information (installation instructions, mailing list)
 as well as the source code and issue tracker on our
 `GitHub page <https://github.com/charbeljc/hjs/>`__.
 
+_(actually not, you're reading the whole doc, just `pip install hjs` and you are done.)_

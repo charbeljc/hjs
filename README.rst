@@ -1,7 +1,7 @@
 ===
 hjs 
 ===
-|build|gpa|cover|
+|build||gpa||cover|
 
 ``hjs`` is a thin wrapper around `hjson <http://github.com/hjson/hjson-py>`_
 

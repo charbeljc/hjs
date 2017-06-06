@@ -1,10 +1,17 @@
 ===
 hjs 
 ===
+|build|gpa|cover|
 
 ``hjs`` is a thin wrapper around `hjson <http://github.com/hjson/hjson-py>`_
 
-.. image:: https://api.travis-ci.org/charbeljc/hjs.svg?branch=master
+.. |build| image:: https://api.travis-ci.org/charbeljc/hjs.svg?branch=master
+.. _build: https://travis-ci.org/charbeljc/hjs
+.. |gpa| image:: https://codeclimate.com/github/charbeljc/hjs/badges/gpa.svg
+.. _gpa: https://codeclimate.com/github/charbeljc/hjs
+.. |cover| image:: https://codeclimate.com/github/charbeljc/hjs/badges/coverage.svg
+.. _cover:  https://codeclimate.com/github/charbeljc/hjs/coverage
+
 .. image:: https://duckduckgo.com/i/bf0eb228.png
 .. code-block:: python
 

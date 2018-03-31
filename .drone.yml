@@ -1,9 +1,5 @@
 pipeline:
 
-  clone:
-    git:
-      tags: true
-
   build:
     image: pybuilder
     commands:

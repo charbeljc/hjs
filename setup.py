@@ -35,8 +35,8 @@ Topic :: Software Development :: Libraries :: Python Modules
 if __name__ == "__main__":
     setup(
         name="hjs",
-        use_scm_version=True,
         description=DESCRIPTION,
+        vcversioner={},
         long_description=LONG_DESCRIPTION,
         keywords="json comments configuration",
         classifiers=CLASSIFIERS,
@@ -47,5 +47,5 @@ if __name__ == "__main__":
         packages=['hjs', 'hjs.tests'],
         platforms=['any'],
         install_requires=['hjson', 'six'],
-        setup_requires=['setuptools_scm'])
+        setup_requires=['vcversioner'])
 

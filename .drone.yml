@@ -3,6 +3,7 @@ pipeline:
   build:
     image: python:3-slim
     commands:
+      - echo "starting build"
       - pip install -r requirements.txt
       - pip install -e .
       - pip install pytest

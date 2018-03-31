@@ -1,4 +1,5 @@
 pipeline:
+
     build:
         image: python:3-slim
         commands:

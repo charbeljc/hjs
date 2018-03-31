@@ -1,5 +1,10 @@
 pipeline:
 
+  clone:
+    git:
+      image: plugins/git
+      tags: true
+
   build:
     image: pybuilder
     commands:

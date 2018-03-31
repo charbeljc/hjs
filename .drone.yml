@@ -1,9 +1,9 @@
-pipeline:
-
-  clone:
+clone:
+  git:
     image: plugins/git
-    git:
-      tags: true
+    tags: true
+
+pipeline:
 
   build:
     image: pybuilder

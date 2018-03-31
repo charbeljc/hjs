@@ -1,8 +1,14 @@
 pipeline:
 
-    build:
-        image: python:3-slim
-        commands:
-            - pip install -e .
-            - tox
+  build:
+    image: python:3-slim
+      commands:
+        - pip install -e .
+        - tox
 
+  resolve:
+    image: alpine
+    commands:
+      - cat /etc/resolv.conf
+    when:
+      status: [ success, failure ]

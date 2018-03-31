@@ -1,11 +1,5 @@
 pipeline:
 
-  build:
-    image: python:3-slim
-      commands:
-        - pip install -e .
-        - tox
-
   resolve:
     image: alpine
     commands:

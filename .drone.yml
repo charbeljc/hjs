@@ -1,6 +1,6 @@
 pipeline:
     build:
-        image: python:3-alpine
+        image: python:3-slim
         commands:
             - pip install -e .
             - tox

@@ -1,8 +1,8 @@
 pipeline:
 
   clone:
+    image: plugins/git
     git:
-      image: plugins/git
       tags: true
 
   build:

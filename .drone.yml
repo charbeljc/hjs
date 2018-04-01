@@ -16,21 +16,21 @@ pipeline:
     group: qa
     image: pybuilder
     commands:
-      - source . .venv/bin/activate
+      - . .venv/bin/activate
       - pytest
 
   pylint:
     group: qa
     image: pybuilder
     commands:
-      - source . .venv/bin/activate
+      - . .venv/bin/activate
       - pylint hjs
 
   doc:
     group: qa
     image: pybuilder
     commands:
-      - source . .venv/bin/activate
+      - . .venv/bin/activate
       - sphinx-build -b html doc/source doc/build
 
   sonar:

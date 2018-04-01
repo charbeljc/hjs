@@ -37,4 +37,6 @@ By the way, you should support [pypi](https://pypi.python.org/pypi),
 because, given the strategic importance of this project, it is *way*
 under budgeted, as I heard...
 
+Time for bugfixes
+
 Regards, @CJC\_2017.

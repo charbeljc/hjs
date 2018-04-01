@@ -21,6 +21,8 @@ pipeline:
     image: pybuilder
     commands:
       - echo "uploading to local devpi"
-      - twine upload -r devpi dist/*
+      - devpi login root
+      - devpi use
+        # - twine upload -r devpi dist/*
     when:
       status: [ success ]

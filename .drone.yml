@@ -24,7 +24,7 @@ pipeline:
     image: pybuilder
     commands:
       - . .venv/bin/activate
-      - pylint hjs -r n > pylint-report.txt; exit 0
+      - (pylint hjs -r n > pylint-report.txt; exit 0)
 
   doc:
     group: qa

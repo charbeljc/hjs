@@ -25,7 +25,7 @@ pipeline:
     commands:
       - . .venv/bin/activate
       - pylint hjs -r n > pylint-report.txt
-      - echo "Status: $?"
+      - echo "Status: $$?"
 
   doc:
     group: qa

@@ -8,27 +8,30 @@ pipeline:
   deps:
     image: pybuilder
     commands:
+      - python -m venv .venv
+      - source . .venv/bin/activate
       - pip install -r dev-requirements.txt
 
   test:
     group: qa
     image: pybuilder
     commands:
-      - pip install -r requirements.txt
+      - source . .venv/bin/activate
       - pytest
 
   pylint:
     group: qa
     image: pybuilder
     commands:
-      - pip install -r requirements.txt
+      - source . .venv/bin/activate
       - pylint hjs
 
   doc:
     group: qa
     image: pybuilder
     commands:
-      - sphinx-build -b html doc/source dist/html
+      - source . .venv/bin/activate
+      - sphinx-build -b html doc/source doc/build
 
   sonar:
     group: qa

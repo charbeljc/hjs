@@ -17,7 +17,7 @@ pipeline:
     image: pybuilder
     commands:
       - . .venv/bin/activate
-      - pytest --cov-report xml --cov=hjs
+      - pytest --cov-report xml --cov=hjs --junitxml=xunit.xml
 
   pylint:
     group: qa

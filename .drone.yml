@@ -5,16 +5,19 @@ clone:
 
 pipeline:
 
+  deps:
+    image: pybuilder
+    commands:
+      - pip install -r dev-requirements.txt
+
   test:
     image: pybuilder
     commands:
-      - echo "starting build"
-      - pwd
-      - echo $HOME
-      - id
-      - ls -la
-      - pip install -r dev-requirements.txt
       - pytest
+
+  doc:
+    image: pybuilder
+    commands:
       - sphinx-build -b html doc/source dist/html
 
   sonar:

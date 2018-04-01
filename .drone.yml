@@ -22,7 +22,7 @@ pipeline:
     image: pybuilder
     commands:
       - pip install -r requirements.txt
-      - pylint
+      - pylint hjs
 
   doc:
     group: qa
@@ -34,7 +34,7 @@ pipeline:
     group: qa
     image: sonar-scanner
     commands:
-      - sonar-scanner
+      - sonar-scanner -X
 
   deploy:
     image: pybuilder

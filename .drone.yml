@@ -34,10 +34,7 @@ pipeline:
     group: qa
     image: sonar-scanner
     commands:
-      - sonar-scanner -h
-      - sonar-scanner \
-          -Dsonar.projectKey=hjs \
-          -Dsonar.login=fcccb2f14c39d2594d41ee6566f2bd77816c42e1
+      - sonar-scanner
 
   deploy:
     image: pybuilder

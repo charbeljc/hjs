@@ -11,16 +11,25 @@ pipeline:
       - pip install -r dev-requirements.txt
 
   test:
+    group: qa
     image: pybuilder
     commands:
       - pytest
 
+  pylint:
+    group: qa
+    image: pybuilder
+    commands:
+      - pylint
+
   doc:
+    group: qa
     image: pybuilder
     commands:
       - sphinx-build -b html doc/source dist/html
 
   sonar:
+    group: qa
     image: sonar-scanner
     commands:
       - sonar-scanner -h

@@ -48,3 +48,8 @@ pipeline:
       - devpi upload --with-docs --format sdist,bdist_wheel
     when:
       status: [ success ]
+
+  slack:
+    image: plugins/slack
+    webook: http://mattermost:8065/hooks/wqdf45cttt81mqcfrj5p1ewmdc
+    channel: QA

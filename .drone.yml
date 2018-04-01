@@ -25,6 +25,5 @@ pipeline:
       - devpi login test --password=test
       - devpi use test/dev
       - devpi upload --with-docs --format sdist,bdist_wheel
-        # - twine upload -r devpi dist/*
     when:
       status: [ success ]

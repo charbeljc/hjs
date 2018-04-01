@@ -17,9 +17,9 @@ pipeline:
       - pytest
       - python setup.py sdist bdist_wheel
 
-  resolve:
-    image: alpine
+  deploy:
+    image: pybuilder
     commands:
-      - cat /etc/resolv.conf
+      - twine upload dist/*
     when:
-      status: [ success, failure ]
+      status: [ success ]

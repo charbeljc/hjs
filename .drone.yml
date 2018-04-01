@@ -12,6 +12,7 @@ pipeline:
       - echo $(pwd)
       - echo $HOME
       - id
+      - ls -la
       - pip install -r requirements.txt
       - pip install pytest
       - pytest

@@ -37,7 +37,6 @@ pipeline:
       - sonar-scanner -h
       - sonar-scanner \
           -Dsonar.projectKey=hjs \
-          -Dsonar.host.url=http://127.0.0.1:9001 \
           -Dsonar.login=fcccb2f14c39d2594d41ee6566f2bd77816c42e1
 
   deploy:

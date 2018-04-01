@@ -5,7 +5,7 @@ clone:
 
 pipeline:
 
-  build:
+  test:
     image: pybuilder
     commands:
       - echo "starting build"
@@ -15,8 +15,12 @@ pipeline:
       - ls -la
       - pip install -r dev-requirements.txt
       - pytest
-      - python setup.py sdist bdist_wheel
 
+  docs:
+    image: pybuilder
+    commands:
+      - sphinx-build -b html docs/source dist/html
+  
   deploy:
     image: pybuilder
     commands:
@@ -24,7 +28,7 @@ pipeline:
       - devpi use http://devpi:3141
       - devpi login test --password=test
       - devpi use test/dev
-      - devpi upload --format sdist,bdist_wheel
+      - devpi upload --with-docs --format sdist,bdist_wheel
         # - twine upload -r devpi dist/*
     when:
       status: [ success ]

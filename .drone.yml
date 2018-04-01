@@ -20,6 +20,6 @@ pipeline:
   deploy:
     image: pybuilder
     commands:
-      - twine upload dist/*
+      - twine upload -r devpi dist/*
     when:
       status: [ success ]

@@ -15,10 +15,6 @@ pipeline:
       - ls -la
       - pip install -r dev-requirements.txt
       - pytest
-
-  docs:
-    image: pybuilder
-    commands:
       - sphinx-build -b html docs/source dist/html
   
   deploy:

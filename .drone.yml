@@ -9,7 +9,7 @@ pipeline:
     image: pybuilder
     commands:
       - echo "starting build"
-      - echo $(pwd)
+      - pwd
       - echo $HOME
       - id
       - ls -la

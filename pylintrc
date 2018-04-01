@@ -1,1 +1,2 @@
-msg-template="{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}" 
+[REPORT]
+msg-template="{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}"

@@ -22,7 +22,7 @@ pipeline:
     commands:
       - echo "uploading to local devpi"
       - devpi use http://devpi:3141
-      - devpi loging test --password=test
+      - devpi login test --password=test
       - devpi use test/dev
       - devpi upload --format sdist,bdist_wheel
         # - twine upload -r devpi dist/*

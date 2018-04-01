@@ -13,8 +13,7 @@ pipeline:
       - echo $HOME
       - id
       - ls -la
-      - pip install -r requirements.txt
-      - pip install pytest
+      - pip install --trusted-host devpi -r dev-requirements.txt
       - pytest
       - python setup.py sdist bdist_wheel
 

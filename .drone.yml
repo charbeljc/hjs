@@ -24,7 +24,7 @@ pipeline:
     image: pybuilder
     commands:
       - . .venv/bin/activate
-      - pylint hjs -r n --msg-template="{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}" > pylint-report.txt
+      - pylint hjs -r n > pylint-report.txt
       - echo "Status: $?"
 
   doc:

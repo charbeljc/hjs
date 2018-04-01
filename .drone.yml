@@ -41,7 +41,7 @@ pipeline:
   deploy:
     image: pybuilder
     commands:
-      - echo "uploading to local devpi"
+      - . .venv/bin/activate
       - devpi use http://devpi:3141
       - devpi login test --password=test
       - devpi use test/dev

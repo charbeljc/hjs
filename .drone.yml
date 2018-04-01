@@ -14,12 +14,14 @@ pipeline:
     group: qa
     image: pybuilder
     commands:
+      - pip install -r requirements.txt
       - pytest
 
   pylint:
     group: qa
     image: pybuilder
     commands:
+      - pip install -r requirements.txt
       - pylint
 
   doc:

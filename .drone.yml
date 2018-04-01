@@ -34,7 +34,6 @@ pipeline:
       - sphinx-build -b html doc/source doc/build
 
   sonar:
-    group: qa
     image: sonar-scanner
     commands:
       - sonar-scanner -X

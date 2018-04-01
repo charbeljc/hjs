@@ -9,6 +9,7 @@ pipeline:
     image: pybuilder
     commands:
       - echo "starting build"
+      - echo $(pwd)
       - echo $HOME
       - id
       - pip install -r requirements.txt

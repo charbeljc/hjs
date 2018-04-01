@@ -10,7 +10,7 @@ pipeline:
     commands:
       - echo "starting build"
       - echo $HOME
-      - echo $USER
+      - id
       - pip install -r requirements.txt
       - pip install pytest
       - pytest

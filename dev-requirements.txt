@@ -1,4 +1,6 @@
 -r requirements.txt
+setuptools
+wheel
 pytest
 pytest-cov
 lxml

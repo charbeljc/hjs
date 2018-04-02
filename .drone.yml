@@ -53,6 +53,6 @@ pipeline:
     image: plugins/slack
     webhook: "http://mattermost:8065/hooks/wqdf45cttt81mqcfrj5p1ewmdc"
     channel: QA
-    username: charbel
+    username: drone
     when:
       status: [ success, failure ]

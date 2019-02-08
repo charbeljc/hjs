@@ -20,6 +20,8 @@ A thin wrapper around [hjson](http://github.com/hjson/hjson-py).
 'hum, what if i put an é in this ?'
 """
 from __future__ import unicode_literals
+import hjson
+
 from functools import wraps
 from collections import OrderedDict
 import six
@@ -31,7 +33,6 @@ if PY36:
 else:
     BaseDict = OrderedDict
 
-import hjson
 from .version import __version__  # noqa: F401
 
 
@@ -69,12 +70,6 @@ class hjs(BaseDict):
 
     def __dir__(self):
         return self.keys()
-
-    #def __repr__(self):
-    #    return 'hjs("""\n%s""")' % hjson.dumps(self).encode('utf-8')
-
-    #def _repr_pretty_(self, p, cycle):
-    #    p.text(repr(self))
 
 
 class shjs(hjs):

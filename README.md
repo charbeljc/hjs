@@ -16,7 +16,7 @@ todo ...
 >>> da = loads("""
 ... {
 ...    a: 1
-...    b: are you ok with it ?
+...    b: are you ok with it ? // Hey, wtf are you talking about
 ...    c: '''
 ...       what a rest,
 ...       isn't it ?

@@ -5,6 +5,7 @@ import sys
 try:
     from setuptools import setup
 except ImportError:
+    print('No setuptools!')
     from distutils.core import setup
 
 IS_PYPY = hasattr(sys, 'pypy_translation_info')
@@ -44,7 +45,7 @@ if __name__ == "__main__":
         author_email="charbel.jacquin@gmail.com",
         url="http://github.com/charbeljc/hjs",
         license="MIT License",
-        packages=['hjs', 'hjs.tests'],
+        packages=['hjs'],
         platforms=['any'],
         install_requires=['hjson', 'six'],
         setup_requires=['setuptools_scm'])

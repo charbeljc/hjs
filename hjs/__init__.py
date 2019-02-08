@@ -22,15 +22,25 @@ A thin wrapper around [hjson](http://github.com/hjson/hjson-py).
 from __future__ import unicode_literals
 from functools import wraps
 from collections import OrderedDict
-import hjson
 import six
+import sys
+PY36 = sys.version_info[:2] >= (3, 6)
+
+if PY36:
+    BaseDict = dict
+else:
+    BaseDict = OrderedDict
+
+import hjson
 from .version import __version__  # noqa: F401
 
 
-class hjs(OrderedDict):
+class hjs(BaseDict):
     """
     TODO ;-)
     """
+    _strict = False
+
     def __init__(self, *args, **kwargs):
         try:
             super(hjs, self).__init__(*args, **kwargs)
@@ -47,7 +57,9 @@ class hjs(OrderedDict):
         try:
             return self.__getitem__(name)
         except KeyError:
-            raise AttributeError(name)
+            if self.__class__._strict:
+                raise AttributeError(name)
+            return None
 
     def __setattr__(self, name, value):
         if name.startswith('_'):
@@ -58,20 +70,23 @@ class hjs(OrderedDict):
     def __dir__(self):
         return self.keys()
 
-    def __repr__(self):
-        return 'hjs("""\n%s""")' % hjson.dumps(self).encode('utf-8')
+    #def __repr__(self):
+    #    return 'hjs("""\n%s""")' % hjson.dumps(self).encode('utf-8')
 
-    def _repr_pretty_(self, p, cycle):
-        p.text(repr(self))
+    #def _repr_pretty_(self, p, cycle):
+    #    p.text(repr(self))
 
 
-def adapt_loader(fun):
+class shjs(hjs):
+    _strict = True
 
+
+def adapt_loader(fun, strict=False):
     @wraps(fun)
     def with_my_object_pairs_hook(*args, **kwds):
         hook = kwds.get('object_pairs_hook')
-        if hook is None or hook is OrderedDict:
-            kwds['object_pairs_hook'] = hjs
+        if hook is None or hook in (BaseDict, OrderedDict):
+            kwds['object_pairs_hook'] = shjs if strict else hjs
         return fun(*args, **kwds)
 
     return with_my_object_pairs_hook
@@ -79,6 +94,8 @@ def adapt_loader(fun):
 
 loads = adapt_loader(hjson.loads)  # noqa: F401
 load = adapt_loader(hjson.load)    # noqa: F401
+sloads = adapt_loader(hjson.loads, strict=True)  # noqa: F401
+sload = adapt_loader(hjson.load, strict=True)    # noqa: F401
 
 
 def dumps(obj, human=False, **kw):

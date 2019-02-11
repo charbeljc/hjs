@@ -21,6 +21,8 @@ A thin wrapper around [hjson](http://github.com/hjson/hjson-py).
 """
 from __future__ import unicode_literals
 import hjson
+import json
+from datetime import date, datetime
 
 from functools import wraps
 from collections import OrderedDict
@@ -34,7 +36,6 @@ else:
     BaseDict = OrderedDict
 
 from .version import __version__  # noqa: F401
-
 
 class hjs(BaseDict):
     """
@@ -75,6 +76,15 @@ class hjs(BaseDict):
 class shjs(hjs):
     _strict = True
 
+class HJSEncoder(json.JSONEncoder):
+    def default(sef, obj):
+        if isinstance(obj, (date, datetime)):
+            return obj.isoformat()
+        if isinstance(obj, Exception):
+            return {'_type': obj.__class__.__name__,
+                    'args': obj.args }
+        return super().default(obj)
+
 
 def adapt_loader(fun, strict=False):
     @wraps(fun)
@@ -94,6 +104,8 @@ sload = adapt_loader(hjson.load, strict=True)    # noqa: F401
 
 
 def dumps(obj, human=False, **kw):
+    if 'cls' not in kw:
+        kw['cls'] = HJSEncoder
     if human:
         return hjson.dumps(obj, **kw)
     else:

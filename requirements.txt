@@ -1,2 +1,2 @@
-hjson
+-e git+http://github.com/charbeljc/hjson-py.git@cjc#egg=hjson
 six

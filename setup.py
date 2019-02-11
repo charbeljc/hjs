@@ -47,6 +47,9 @@ if __name__ == "__main__":
         license="MIT License",
         packages=['hjs'],
         platforms=['any'],
-        install_requires=['hjson', 'six'],
+        install_requires=['hjson==3.0.2', 'six'],
+        dependency_links = [
+            "git+git://github.com/charbeljc/hjson-py.git@cjc#egg=hjson-3.0.2",
+        ],
         setup_requires=['setuptools_scm'])
 

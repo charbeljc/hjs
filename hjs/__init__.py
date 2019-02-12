@@ -82,7 +82,8 @@ class HJSEncoder(json.JSONEncoder):
             return obj.isoformat()
         if isinstance(obj, Exception):
             return {'_type': obj.__class__.__name__,
-                    'args': obj.args }
+                    'args': obj.args,
+                    'str': str(obj) }
         return super().default(obj)
 
 

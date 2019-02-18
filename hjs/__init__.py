@@ -78,6 +78,8 @@ class shjs(hjs):
 
 class HJSEncoder(json.JSONEncoder):
     def default(sef, obj):
+        if hasattr(obj, '__json__'):
+            return obj.__json__()
         if isinstance(obj, (date, datetime)):
             return obj.isoformat()
         if isinstance(obj, Exception):

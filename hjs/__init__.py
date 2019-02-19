@@ -22,6 +22,7 @@ A thin wrapper around [hjson](http://github.com/hjson/hjson-py).
 from __future__ import unicode_literals
 import hjson
 import json
+import base64
 from datetime import date, datetime
 
 from functools import wraps
@@ -77,11 +78,18 @@ class shjs(hjs):
     _strict = True
 
 class HJSEncoder(json.JSONEncoder):
+
     def default(sef, obj):
+
         if hasattr(obj, '__json__'):
             return obj.__json__()
+
         if isinstance(obj, (date, datetime)):
             return obj.isoformat()
+
+        if isinstance(obj, bytes):
+            return {'bytes': base64.encodebytes(obj).decode()}
+
         if isinstance(obj, Exception):
             return {'_type': obj.__class__.__name__,
                     'args': obj.args,

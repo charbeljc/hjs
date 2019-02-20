@@ -10,3 +10,8 @@ _cache
 .tox
 .coverage
 htmlcov/
+.cagoule.db
+.pytest_cache
+.report.json
+cucumber.json
+geckodriver.log

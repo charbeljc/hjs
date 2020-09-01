@@ -52,3 +52,5 @@ Regards, @CJC\_2017.
 Hum, time to be serious about doc, maybe ?
 Hum, no, software needing documentation is broken software :-D
 
+
+Spurious comment
